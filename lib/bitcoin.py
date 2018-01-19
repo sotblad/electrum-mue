@@ -22,6 +22,9 @@
 # ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+#
+# Electrum-PIVX - lightweight PIVX client
+# Copyright (C) 2018 random.zebra
 
 import hashlib
 import base64
@@ -61,7 +64,7 @@ XPRV_HEADERS = {
     'p2wsh': 0x2aa7a99
 }
 XPUB_HEADERS = {
-    'standard': 0x0488b21e,
+    'standard': 0x022D2533,
     'p2wpkh-p2sh': 0x049d7cb2,
     'p2wsh-p2sh': 0x295b43f,
     'p2wpkh': 0x4b24746,
@@ -74,12 +77,12 @@ class NetworkConstants:
     @classmethod
     def set_mainnet(cls):
         cls.TESTNET = False
-        cls.WIF_PREFIX = 0x80
-        cls.ADDRTYPE_P2PKH = 0
-        cls.ADDRTYPE_P2SH = 5
+        cls.WIF_PREFIX = 0xd4   # 212
+        cls.ADDRTYPE_P2PKH = 30
+        cls.ADDRTYPE_P2SH = 13
         cls.SEGWIT_HRP = "bc"
-        cls.GENESIS = "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
-        cls.DEFAULT_PORTS = {'t': '50001', 's': '50002'}
+        cls.GENESIS = "0000041e482b9b9691d98eefb48473405c0b8ec31b76df3797c74a78680ef818"
+        cls.DEFAULT_PORTS = {'t': '60001', 's': '60002'}
         cls.DEFAULT_SERVERS = read_json('servers.json', {})
         cls.CHECKPOINTS = read_json('checkpoints.json', [])
 
@@ -91,7 +94,7 @@ class NetworkConstants:
         cls.ADDRTYPE_P2SH = 196
         cls.SEGWIT_HRP = "tb"
         cls.GENESIS = "000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943"
-        cls.DEFAULT_PORTS = {'t':'51001', 's':'51002'}
+        cls.DEFAULT_PORTS = {'t':'61001', 's':'61002'}
         cls.DEFAULT_SERVERS = read_json('servers_testnet.json', {})
         cls.CHECKPOINTS = read_json('checkpoints_testnet.json', [])
 
@@ -619,7 +622,7 @@ from ecdsa.util import string_to_number, number_to_string
 
 def msg_magic(message):
     length = bfh(var_int(len(message)))
-    return b"\x18Bitcoin Signed Message:\n" + length + message
+    return b"\x18DarkNet Signed Message:\n" + length + message
 
 
 def verify_message(address, sig, message):

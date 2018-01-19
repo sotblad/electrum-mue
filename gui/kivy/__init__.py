@@ -24,6 +24,9 @@
 # SOFTWARE.
 #
 # Kivy GUI
+#
+# Electrum-PIVX - lightweight PIVX client
+# Copyright (C) 2018 random.zebra
 
 import sys
 import os

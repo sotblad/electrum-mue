@@ -20,6 +20,9 @@
 # ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+#
+# Electrum-PIVX - lightweight PIVX client
+# Copyright (C) 2018 random.zebra
 import re
 import dns
 import json
@@ -87,7 +90,7 @@ class Contacts(dict):
                 'type': 'openalias',
                 'validated': validated
             }
-        raise Exception("Invalid Bitcoin address or alias", k)
+        raise Exception("Invalid PIVX address or alias", k)
 
     def resolve_openalias(self, url):
         # support email-style addresses, per the OA standard
