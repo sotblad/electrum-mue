@@ -25,8 +25,9 @@
 #
 # Kivy GUI
 #
-# Electrum-PIVX - lightweight PIVX client
+# Electrum-MUE - lightweight MUE client
 # Copyright (C) 2018 random.zebra
+# Copyright (C) 2018 sotblad
 
 import sys
 import os
