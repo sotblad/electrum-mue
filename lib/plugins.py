@@ -23,8 +23,9 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# Electrum-PIVX - lightweight PIVX client
+# Electrum-MUE - lightweight MUE client
 # Copyright (C) 2018 random.zebra
+# Copyright (C) 2018 sotblad
 from collections import namedtuple
 import traceback
 import sys
@@ -446,7 +447,7 @@ class DeviceMgr(ThreadJob, PrintError):
         # or it is not pairable
         raise DeviceUnpairableError(
             _('Electrum cannot pair with your %s.\n\n'
-              'Before you request PIV coins to be sent to addresses in this '
+              'Before you request MUE coins to be sent to addresses in this '
               'wallet, ensure you can pair with your device, or that you have '
               'its seed (and passphrase, if any).  Otherwise all coins you '
               'receive will be unspendable.') % plugin.device)
