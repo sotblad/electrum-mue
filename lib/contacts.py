@@ -21,8 +21,9 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# Electrum-PIVX - lightweight PIVX client
+# Electrum-MUE - lightweight MUE client
 # Copyright (C) 2018 random.zebra
+# Copyright (C) 2018 sotblad
 import re
 import dns
 import json
@@ -90,7 +91,7 @@ class Contacts(dict):
                 'type': 'openalias',
                 'validated': validated
             }
-        raise Exception("Invalid PIVX address or alias", k)
+        raise Exception("Invalid MUE address or alias", k)
 
     def resolve_openalias(self, url):
         # support email-style addresses, per the OA standard
