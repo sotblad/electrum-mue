@@ -23,8 +23,9 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# Electrum-PIVX - lightweight PIVX client
+# Electrum-MUE - lightweight MUE client
 # Copyright (C) 2018 random.zebra
+# Copyright (C) 2018 sotblad
 import sys, time, threading
 import os, json, traceback
 import shutil
@@ -366,7 +367,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
             self.setGeometry(100, 100, 840, 400)
 
     def watching_only_changed(self):
-        name = "Electrum-PIVX Testnet" if NetworkConstants.TESTNET else "Electrum-PIVX"
+        name = "Electrum-MUE Testnet" if NetworkConstants.TESTNET else "Electrum-MUE"
         title = '%s %s  -  %s' % (name, self.wallet.electrum_version,
                                         self.wallet.basename())
         extra = [self.wallet.storage.get('wallet_type', '?')]
@@ -641,9 +642,9 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         if self.decimal_point == 2:
             return 'bits'
         if self.decimal_point == 5:
-            return 'mPIV'
+            return 'mMUE'
         if self.decimal_point == 8:
-            return 'PIV'
+            return 'MUE'
         raise Exception('Unknown base unit')
 
     def connect_fields(self, window, btc_e, fiat_e, fee_e):
@@ -2672,7 +2673,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         self.fee_unit = self.config.get('fee_unit', 0)
         fee_unit_label = HelpLabel(_('Fee Unit') + ':', '')
         fee_unit_combo = QComboBox()
-        fee_unit_combo.addItems([_('sat/byte'), _('mPIV/kB')])
+        fee_unit_combo.addItems([_('sat/byte'), _('mMUE/kB')])
         fee_unit_combo.setCurrentIndex(self.fee_unit)
         def on_fee_unit(x):
             self.fee_unit = x
@@ -2731,9 +2732,9 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         SSL_id_e.setReadOnly(True)
         id_widgets.append((SSL_id_label, SSL_id_e))
 
-        units = ['PIV', 'mPIV', 'bits']
+        units = ['MUE', 'mMUE', 'bits']
         msg = _('Base unit of your wallet.')\
-              + '\n1PIV=1000mPIV.\n' \
+              + '\n1MUE=1000mMUE.\n' \
               + _(' These settings affects the fields in the Send tab')+' '
         unit_label = HelpLabel(_('Base unit') + ':', msg)
         unit_combo = QComboBox()
@@ -2745,9 +2746,9 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
                 return
             edits = self.amount_e, self.fee_e, self.receive_amount_e
             amounts = [edit.get_amount() for edit in edits]
-            if unit_result == 'PIV':
+            if unit_result == 'MUE':
                 self.decimal_point = 8
-            elif unit_result == 'mPIV':
+            elif unit_result == 'mMUE':
                 self.decimal_point = 5
             elif unit_result == 'bits':
                 self.decimal_point = 2
