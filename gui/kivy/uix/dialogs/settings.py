@@ -46,13 +46,13 @@ Builder.load_string('''
                 SettingsItem:
                     bu: app.base_unit
                     title: _('Denomination') + ': ' + self.bu
-                    description: _("Base unit for PIVX amounts.")
+                    description: _("Base unit for MUE amounts.")
                     action: partial(root.unit_dialog, self)
                 CardSeparator
                 SettingsItem:
                     status: root.fee_status()
                     title: _('Fees') + ': ' + self.status
-                    description: _("Fees paid to the PIVX network.")
+                    description: _("Fees paid to the MUE network.")
                     action: partial(root.fee_dialog, self)
                 CardSeparator
                 SettingsItem:
