@@ -21,8 +21,9 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# Electrum-PIVX - lightweight PIVX client
+# Electrum-MUE - lightweight MUE client
 # Copyright (C) 2018 random.zebra
+# Copyright (C) 2018 sotblad
 import binascii
 import os, sys, re, json
 from collections import defaultdict
@@ -330,11 +331,11 @@ def user_dir():
     if 'ANDROID_DATA' in os.environ:
         return android_check_data_dir()
     elif os.name == 'posix':
-        return os.path.join(os.environ["HOME"], ".electrum-pivx")
+        return os.path.join(os.environ["HOME"], ".electrum-mue")
     elif "APPDATA" in os.environ:
-        return os.path.join(os.environ["APPDATA"], "Electrum-Pivx")
+        return os.path.join(os.environ["APPDATA"], "Electrum-Mue")
     elif "LOCALAPPDATA" in os.environ:
-        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-Pivx")
+        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-Mue")
     else:
         #raise Exception("No home directory found in environment variables.")
         return
@@ -499,12 +500,12 @@ def parse_URI(uri, on_pr=None):
 
     if ':' not in uri:
         if not bitcoin.is_address(uri):
-            raise BaseException("Not a PIVX address")
+            raise BaseException("Not a MUE address")
         return {'address': uri}
 
     u = urllib.parse.urlparse(uri)
     if u.scheme != 'bitcoin':
-        raise BaseException("Not a PIVX URI")
+        raise BaseException("Not a MUE URI")
     address = u.path
 
     # python for android fails to parse query
@@ -521,7 +522,7 @@ def parse_URI(uri, on_pr=None):
     out = {k: v[0] for k, v in pq.items()}
     if address:
         if not bitcoin.is_address(address):
-            raise BaseException("Invalid PIVX address:" + address)
+            raise BaseException("Invalid MUE address:" + address)
         out['address'] = address
     if 'amount' in out:
         am = out['amount']
