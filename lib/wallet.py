@@ -21,8 +21,9 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# Electrum-PIVX - lightweight PIVX client
+# Electrum-MUE - lightweight MUE client
 # Copyright (C) 2018 random.zebra
+# Copyright (C) 2018 sotblad
 
 # Wallet classes:
 #   - Imported_Wallet: imported address, no keystore
@@ -590,7 +591,7 @@ class Abstract_Wallet(PrintError):
         received, sent = self.get_addr_io(address)
         return sum([v for height, v, is_cb in received.values()])
 
-    # return the balance of a PIVX address: confirmed and matured, unconfirmed, unmatured
+    # return the balance of a MUE address: confirmed and matured, unconfirmed, unmatured
     def get_addr_balance(self, address):
         received, sent = self.get_addr_io(address)
         c = u = x = 0
@@ -877,7 +878,7 @@ class Abstract_Wallet(PrintError):
             _type, data, value = o
             if _type == TYPE_ADDRESS:
                 if not is_address(data):
-                    raise BaseException("Invalid PIVX address:" + data)
+                    raise BaseException("Invalid MUE address:" + data)
             if value == '!':
                 if i_max is not None:
                     raise BaseException("More than one output set to spend max")
