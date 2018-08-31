@@ -370,21 +370,11 @@ class Zaif(ExchangeBase):
         json = self.get_json('api.zaif.jp', '/api/1/last_price/btc_jpy')
         return {'JPY': Decimal(json['last_price'])}
 
-class HitBTC(ExchangeBase):
-
-    def get_rates(self, ccy):
-        ccys = ['USD']
-        json = self.get_json('api.hitbtc.com', '/api/1/public/SMART%s/ticker' % ccy)
-        result = dict.fromkeys(ccys)
-        if ccy in ccys:
-            result[ccy] = Decimal(json['last'])
-        return result
-
 
 class CryptoCompare(ExchangeBase):
 
     def get_rates(self,ccy):
-        json = self.get_json('min-api.cryptocompare.com', '/data/price?fsym=SMART&tsyms=USD,EUR,THB,BTC,ETH')
+        json = self.get_json('min-api.cryptocompare.com', '/data/price?fsym=MUE&tsyms=USD,EUR,THB,BTC,ETH')
         return {'USD': Decimal(json['USD']), 'EUR': Decimal(json['EUR']), 'THB': Decimal(json['THB']), 'BTC': Decimal(json['BTC']), 'ETH': Decimal(json['ETH'])}
 
     def history_ccys(self):
@@ -394,7 +384,7 @@ class CryptoCompare(ExchangeBase):
                 'THB', 'TRY', 'TWD', 'ZAR']
 
     def historical_rates(self, ccy):
-        query = '/data/histoday?fsym=SMART&tsym=%s&limit=1000&aggregate=1' % ccy
+        query = '/data/histoday?fsym=MUE&tsym=%s&limit=1000&aggregate=1' % ccy
         json = self.get_json('min-api.cryptocompare.com', query)
         history = json['Data']
         return dict([(time.strftime('%Y-%m-%d', time.localtime(t['time'])), t['close'])
