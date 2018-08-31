@@ -523,7 +523,7 @@ class Abstract_Wallet(PrintError):
                     if conf:
                         status = _("%d confirmations") % conf
                     else:
-                        status = _('Not verified')
+                        status = _('Verified')
                 else:
                     status = _('Unconfirmed')
                     if fee is None:
