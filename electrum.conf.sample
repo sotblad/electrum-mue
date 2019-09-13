@@ -4,7 +4,7 @@
 # copy this file to /etc/electrum.conf if you want read-only settings
 
 [client]
-server = 181.214.148.6:50001:t
+server = electrum1.monetaryunit.org:50001:t
 proxy = None
 gap_limit = 5
 # booleans use python syntax
