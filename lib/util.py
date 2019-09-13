@@ -436,7 +436,7 @@ def time_difference(distance_in_time, include_seconds):
 
 mainnet_block_explorers = {
     'MonetaryUnit.org': ('https://explorer.monetaryunit.org',
-                        {'tx': 'tx', 'addr': 'address'}),
+                        {'tx': '#/tx', 'addr': '#/address'}),
     'system default': ('blockchain:',
                         {'tx': 'tx', 'addr': 'address'}),
 }
