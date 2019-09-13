@@ -25,7 +25,7 @@
 #
 # Electrum-MUE - lightweight MUE client
 # Copyright (C) 2018 random.zebra
-# Copyright (C) 2018 sotblad
+# Copyright (C) 2019 sotblad
 
 import hashlib
 import base64
@@ -65,7 +65,7 @@ XPRV_HEADERS = {
     'p2wsh': 0x2aa7a99
 }
 XPUB_HEADERS = {
-    'standard': 0x0488B21E,
+    'standard': 0x022D2533,
     'p2wpkh-p2sh': 0x049d7cb2,
     'p2wsh-p2sh': 0x295b43f,
     'p2wpkh': 0x4b24746,
@@ -82,7 +82,7 @@ class NetworkConstants:
         cls.ADDRTYPE_P2PKH = 16
         cls.ADDRTYPE_P2SH = 76
         cls.SEGWIT_HRP = "bc"
-        cls.GENESIS = "0x000002acd994a815401fbaae0e52404b32857efd0b7b0c77b8e0715ccdd6d437"
+        cls.GENESIS = "0b58ed450b3819ca54ab0054c4d220ca4f887d21c9e55d2a333173adf76d987f"
         cls.DEFAULT_PORTS = {'t': '50001', 's': '50002'}
         cls.DEFAULT_SERVERS = read_json('servers.json', {})
         cls.CHECKPOINTS = read_json('checkpoints.json', [])
