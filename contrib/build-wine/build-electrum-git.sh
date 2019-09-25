@@ -18,14 +18,14 @@ set -e
 
 cd tmp
 
-for repo in electrum electrum-locale electrum-icons; do
+for repo in electrum-mue electrum-locale electrum-icons; do
     if [ -d $repo ]; then
 	cd $repo
 	git pull
 	git checkout master
 	cd ..
     else
-	URL=https://github.com/spesmilo/$repo.git
+	URL=https://github.com/sotblad/$repo.git
 	git clone -b master $URL $repo
     fi
 done
@@ -38,19 +38,18 @@ for i in ./locale/*; do
 done
 popd
 
-pushd electrum
+pushd electrum-mue
 if [ ! -z "$1" ]; then
     git checkout $1
 fi
 
 VERSION=`git describe --tags`
 echo "Last commit: $VERSION"
-find -exec touch -d '2000-11-11T11:11:11+00:00' {} +
 popd
 
 rm -rf $WINEPREFIX/drive_c/electrum
-cp -r electrum $WINEPREFIX/drive_c/electrum
-cp electrum/LICENCE .
+cp -r electrum-mue $WINEPREFIX/drive_c/electrum
+cp electrum-mue/LICENCE .
 cp -r electrum-locale/locale $WINEPREFIX/drive_c/electrum/lib/
 cp electrum-icons/icons_rc.py $WINEPREFIX/drive_c/electrum/gui/qt/
 
@@ -70,7 +69,6 @@ wine "C:/python$PYTHON_VERSION/scripts/pyinstaller.exe" --noconfirm --ascii --na
 
 # set timestamps in dist, in order to make the installer reproducible
 pushd dist
-find -exec touch -d '2000-11-11T11:11:11+00:00' {} +
 popd
 
 # build NSIS installer
